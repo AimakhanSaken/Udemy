@@ -95,3 +95,4 @@ answers[1] = prompt('your surname?', '');
 answers[2] = prompt('your age?', '');
 
 console.log(answers);
+
