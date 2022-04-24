@@ -52,6 +52,68 @@ string = upper + lower;
 //var 2
 var string = "hEy, hOW Are You?";
 string[0].toUpperCase() + string.slice(1).toLowerCase();
+//concat ----------------------------------------------
+var furryAnimals = ["Альпака", "Кольцехвостый лемур", "Йети"];
+var scalyAnimals = ["Удав", "Годзилла"];
+var furryAndScalyAnimals = furryAnimals.concat(scalyAnimals);
+//multi concat
+var furryAnimals = ["Альпака", "Кольцехвостый лемур", "Йети"];
+var scalyAnimals = ["Удав", "Годзилла"];
+var featheredAnimals = ["Ара", "Додо"];
+var allAnimals = furryAnimals.concat(scalyAnimals, featheredAnimals);
+allAnimals;
+["Альпака", "Кольцехвостый лемур", "Йети", "Удав", "Годзилла", 
+"Ара", "Додо"];
+//Поиск индекса элемента в массиве
+var colors = ["красный", "зеленый", "синий"];
+colors.indexOf("синий"); //2
+//Если элемента, индекс которого вы запрашиваете, в массиве нет, JavaScript вернет значение −1.
+colors.indexOf("фиолетовый"); // -1
+//Превращаем массив в строку
+var boringAnimals = ["Мартышка", "Кот", "Рыба", "Ящерица"];
+boringAnimals.join();
+//"Мартышка,Кот,Рыба,Ящерица"
+var boringAnimals = ["Мартышка", "Кот", "Рыба", "Ящерица"];
+boringAnimals.join(" - ");
+//"Мартышка - Кот - Рыба - Ящерица"
+boringAnimals.join("*");
+//"Мартышка*Кот*Рыба*Ящерица"
+boringAnimals.join(" и ");
+//"Мартышка и Кот и Рыба и Ящерица"
+//Случайный выбор---------------------------------------------
+//Math.random() при каждом вызове возвращает случайное число от 0 до 1:
+Math.random();
+0.8945409457664937
+Math.random();
+0.3697543195448816
+Math.random();
+0.48314980138093233
+//Округление с помощью Math.floor()
+Math.floor(Math.random() * 4);
+// может выпасть 0, 1, 2 или 3
+var randomWords = ["Взрыв", "Пещера", "Принцесса", "Карандаш"];
+var randomIndex = Math.floor(Math.random() * 4);
+randomWords[randomIndex];
+//"Пещера
 
-
-
+var phrases = [
+    "Звучит неплохо",
+    "Да, это определенно надо сделать",
+    "Не думаю, что это хорошая идея",
+    "Может, не сегодня?",
+    "Компьютер говорит нет"
+    ];
+phrases[Math.floor(Math.random() * 5)];
+//------------------------------------------------------------------
+var randomBodyParts = ["глаз", "нос", "череп"];
+var randomAdjectives = ["вонючая", "унылая", "дурацкая"];
+var randomWords = ["муха", "выдра", "дубина", "мартышка", "крыса"];
+// Выбор случайной части тела из массива randomBodyParts:
+var randomBodyPart = randomBodyParts[Math.floor(Math.random() * 3)];
+// Выбор случайного прилагательного из массива randomAdjectives:
+var randomAdjective = randomAdjectives[Math.floor(Math.random() * 3)];
+ // Выбор случайного слова из массива randomWords:
+var randomWords = randomWords[Math.floor(Math.random() * 5)];
+// Соединяем случайные строки в предложение:
+var randomInsult = "У тебя " + randomBodyPart + " словно " + randomAdjective + " " + randomWord + "!!!";
+randomInsult;
