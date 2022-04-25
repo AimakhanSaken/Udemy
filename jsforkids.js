@@ -155,3 +155,64 @@ randomInsult.join(" ");
 var int = [3, 2, 1];
 var str = [int[0], "bolshe, chem", int[1], "bolshe, chem", int[2]];
 str.join(" ");
+//-----------------------------Objects-------------------------------------------------------------
+var owedMoney = {};
+owedMoney["Jimmy"] = 100;
+owedMoney["Ann"] = 200;
+owedMoney["Jimmy"] += 50;
+owedMoney["Jimmy"];//150
+
+var movies = {
+    "Nemo": {
+        releaseDate: 2003,
+        duration: 100,
+        actors: ["Альберт Брукс", "Эллен Дедженерес", "Александр Гоулд"],
+        format: "DVD"
+    },
+    "Star Wars: Episod VI": {
+        releaseDate: 1983,
+        duration: 134,
+        actors: ["Марк Хэмилл", "Харрисон Форд", "Кэрри Фишер"],
+        format: "DVD"
+    },
+    "Harry Potter": {
+        releaseDate: 2005,
+        duration: 157,
+        actors: ["Дэниел Рэдклифф", "Эмма Уотсон", "Руперт Гринт"],
+        format: "Blu-ray"
+    }
+};
+var findingNemo = movies["Nemo"];
+findingNemo.actors;
+
+var cars = {
+    releaseDate: 2006,
+    duration: 117,
+    actors: ["Оуэн Уилсон", "Бонни Хант", "Пол Ньюман"],
+    format: "Blu-ray"
+};
+movies["Tachki"] = cars;
+Object.keys(movies);
+//------------------------------------HOME WORK----------------------------------------
+var myCrazyObject = {
+    "name": "Нелепый объект",
+    "some array": [7, 9, { purpose: "путаница", number: 123 }, 3.3],
+    "random animal": "Банановая акула"
+    };
+myCrazyObject["some array"][2].number;
+
+//-------------------------------------------------------------------------------------
+var Name = prompt("Kto tam ?");
+if (Name === "Saken" || "Sake") {
+    console.log("Hi to me !");
+}   else {
+    console.log("Hi stranger !");
+}
+
+//-------------------------------------While--------------------------------------------
+var sheepCounter = 0;
+while (sheepCounter < 10) {
+    console.log("Sheep counted: " + sheepCounted + "!");
+        sheepCounter++;
+}
+console.log("ZZZzzzz");
