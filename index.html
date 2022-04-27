@@ -7,12 +7,17 @@
     <title>Document</title>
 </head>
 <body>
-    let absValue;
+    <script>
+      var name = promt("What is your name ?")
+      console.log("Hi" + name);
 
-    if (num >= 0) {
-      absValue = num;
-    } else {
-      absValue = -num;
-    }
+      var likeCats = confirm("Do you like cats ?");
+      if (likeCats) {
+        console.log("Cool cat");
+      } else {
+        console.log("Fuck you !!!");
+      }
+    </script>
+    
 </body>
 </html>

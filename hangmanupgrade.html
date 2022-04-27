@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hangmanupgrade</title>
+</head>
+<body>
+    <script>
+       //создаем массив со словами 
+       var words = [
+           "упражнение",
+           "информация",
+           "идея",
+           "факториал"
+       ];
+       var newWords = ["полезный", "гнойный", "паприка"];
+       words = words.concat(newWords);
+       //generator slychainogo slova
+       var word = words[Math.floor(Math.random() * words.length)];
+
+       //sozdaem massiv s otvetom
+       var answerArray = [];
+       for (var i = 0; i < word.length; i++) {
+            answerArray[i] = "_";
+       };
+
+       var remainingLetters = word.length;
+       guesses = 20;
+
+       //igrovoy cikl
+       while (remainingLetters > 0 && guesses > 0) {
+           //pokazivaem sostoyanie massiva s otvetom
+           alert (answerArray.join(" "));
+           var guess = prompt("Ygadaite bykvy ili nazhmite otmena dlya konca igry");
+           if (guess === null) {
+               break;
+           }    else if (guess.length !== 1){
+               alert ("vvedite odny bykvy");
+           }    else {
+               guesses--;
+               guess = guess.toLowerCase();
+               //obnovlyaem sosotyanie igry
+               for (var j = 0; j < word.length; j++){
+                   if (word[j] === guess && answerArray[j] === "_") {
+                       answerArray[j] = guess;
+                       remainingLetters--;
+                   }
+
+               }
+           }
+           //kenec igrovogo cikla
+       }
+       //otobrazhaem otvet i pozdravlyaem
+       alert (answerArray.join(" "));
+           if (guesses > 0) {
+               alert ("pozdravlyaem ! slovo bylo " + word);
+           }    else {
+               alert (" Hyilysha ! slovo bylo " + word);
+           }
+       
+
+
+        
+    </script>
+    
+</body>
+</html>

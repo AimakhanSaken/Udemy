@@ -265,3 +265,69 @@ for (i = 0; i < input.length; i++) {
     }
 }
 console.log(output);
+
+//--------------------------Game------------------------------------------------------
+var words = [
+    "программа",
+    "макака",
+    "прекрасный",
+    "оладушек"
+    ];
+var newWords = ["пижама", "конкатинация", "залупа"];
+var words = words.concat(newWords);
+
+var word = words[Math.floor(Math.random() * words.length)];
+
+var answerArray = [];
+for (var i = 0; i < word.length; i++); {
+    answerArray[i] = "_";
+}
+var remainingLetters = word.length;
+var guesses = 15;
+
+while (remainingLetters > 0 && guesses > 0) {
+    alert(answerArray.join(" "));
+    var guess = promt("Угадайте букву или нажмите Отмена для выхода из игры.");
+   
+    if (guess === null) {
+        break;
+    }   else if (guess.length !== 1) {
+        alert("Пожалуйста, введите только одну букву.");
+    }   else {
+        guess = guess.toLowerCase();
+        guesses--;
+        for (var j = 0; j < word.length; j++) {
+            if (word[j] === guess && answerArray === "_") {
+                answerArray[j] = guess;
+                remainingLetters--;
+            }
+        }
+    }
+    
+    
+}  
+alert(answerArray.join(" "));
+alert("Отлично! Было загадано слово " + word);
+
+//-----------------------------------Home work--game upgrade--------------------------
+//Добавьте новые слова в массив words.
+var words = ["sdfsd", "dsfsdfs", "sdfsdf"];
+var newWords = ["dfsdfs", "ewrerw"];
+var allWords = words.concat(newWords);
+allWords;
+
+//Заглавные буквы
+guess = guess.toLowerCase();
+
+//Ограничение по ходам
+var guesses = 15;
+while (remainingLetters > 0 && guesses > 0);
+guesses--;
+
+//В игре есть ошибка: если вы будете снова и снова вводить одну и ту же букву, которая есть в загаданном слове remainingLetters будет снова и снова уменьшаться.
+for (var j = 0; j < word.length; j++) {
+    if (word[j] === guess && answerArray === "_") {
+        answerArray[j] = guess;
+        remainingLetters--;
+    }
+}

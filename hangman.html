@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hangman</title>
+</head>
+<body>
+    <script>
+        //sozdaem massiv so slovami
+        var words = [
+        "программа",
+        "макака",
+        "прекрасный",
+        "оладушек"
+        ];
+        var newWords = ["пижама", "конкатинация", "залупа"];
+        var words = words.concat(newWords);
+        //generator slychainogo slova
+        var word = words[Math.floor(Math.random() * words.length)];
+
+        //sozdaem itogovyi massiv
+        var answerArray = [];
+        for (var i = 0; i < word.length; i++) {
+            answerArray[i] = "_";
+        }
+
+        var remainingLetters = word.length;
+        var guesses = 15;
+        //igrovoy cikl
+        while (remainingLetters > 0 && guesses > 0) {
+            //pokazivaem sostoyanie igry
+            alert(answerArray.join(" "));
+            //zaprashivaem variant otveta
+            var guess = prompt("Ygadaite bykvy, ili nazhmite otmena dlyavyhoda.");
+            if (guess === null) {
+                //exit game cikl
+                break;
+            }   else if (guess.length !== 1) {
+                alert("Plzz, vvedite odinochnyu bykvy.");
+            }   else {
+                guesses--;
+                guess = guess.toLowerCase();
+                //obnovlyaem sosotoyanie igry
+                for (var j = 0; j < word.length; j++) {
+                    if (word[j] === guess && answerArray[j] === "_") {
+                        answerArray[j] = guess;
+                        remainingLetters--;
+                    }
+                }
+            }
+        //konec igrovogo cikla    
+        }
+
+        //otobrazhaem otvet i pozdravlyaem
+        alert(answerArray.join(" "));
+        if (guesses > 0) {
+            alert("Отлично! Было загадано слово " + word);
+        }   else {
+            alert("Хуйлуша! Было загадано слово " + word);
+        }
+    </script>
+</body>
+</html>
