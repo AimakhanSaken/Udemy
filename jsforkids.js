@@ -331,3 +331,24 @@ for (var j = 0; j < word.length; j++) {
         remainingLetters--;
     }
 }
+
+//setTimeOut
+var timeUp = function () {
+    alert("Time is over");
+};
+setTimeout(timeUp,5000);
+//Отмена действия таймера
+var doHomeworkAlarm = function () {
+    alert("Hey! Time to do homework!");
+};
+var timeoutId = setTimeout(doHomeworkAlarm, 7000);
+clearTimeout(timeoutId);
+
+//Многократный запуск кода и setInterval
+var counter = 1;
+var printMessage = function () {
+    console.log("You lock at the console " + counter + " sec.");
+    counter++;
+};
+var intervalId = setInterval(printMessage, 5000);
+clearInterval(intervalId);

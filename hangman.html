@@ -8,57 +8,52 @@
 </head>
 <body>
     <script>
-        //sozdaem massiv so slovami
-        var words = [
-        "программа",
-        "макака",
-        "прекрасный",
-        "оладушек"
-        ];
-        var newWords = ["пижама", "конкатинация", "залупа"];
-        var words = words.concat(newWords);
-        //generator slychainogo slova
-        var word = words[Math.floor(Math.random() * words.length)];
-
-        //sozdaem itogovyi massiv
-        var answerArray = [];
-        for (var i = 0; i < word.length; i++) {
-            answerArray[i] = "_";
-        }
-
-        var remainingLetters = word.length;
-        var guesses = 15;
-        //igrovoy cikl
-        while (remainingLetters > 0 && guesses > 0) {
-            //pokazivaem sostoyanie igry
+        var pickWord = function () {
+            var words = ["javascript", "monkey", "amazing", "pancake"];
+            return words[Math.floor(Math.random() * words.length)];
+        };
+        var setupAnswerArray = function (word) {
+            var answerArray = [];
+            for (var i = 0; i < word.length; i++) {
+                answerArray[i] = "_";
+            }
+            return answerArray;
+        };
+        var showPlayerProgress = function (answerArray) {
             alert(answerArray.join(" "));
-            //zaprashivaem variant otveta
-            var guess = prompt("Ygadaite bykvy, ili nazhmite otmena dlyavyhoda.");
-            if (guess === null) {
-                //exit game cikl
-                break;
-            }   else if (guess.length !== 1) {
-                alert("Plzz, vvedite odinochnyu bykvy.");
-            }   else {
-                guesses--;
-                guess = guess.toLowerCase();
-                //obnovlyaem sosotoyanie igry
-                for (var j = 0; j < word.length; j++) {
-                    if (word[j] === guess && answerArray[j] === "_") {
-                        answerArray[j] = guess;
-                        remainingLetters--;
-                    }
+        };
+        var getGuess = function () {
+            return prompt("Guess a latter, or click Cancel.");
+        };
+        var updateGameState = function (guess, word, answerArray) {
+            var appearances = 0;
+            for (var j = 0; j < word.length; j++) {
+                if (word[j] === guess) {
+                    answerArray[j] = guess;
+                    appearances++;
                 }
             }
-        //konec igrovogo cikla    
-        }
+            return appearances;
+        };
+        var showAnswerAndCongratulatePlayer = function (answerArray) {
+            showPlayerProgress(answerArray);
+            alert("Good job! The answer was " + answerArray.join(""));
+        };
+        var word = pickWord();
+        var answerArray = setupAnswerArray(word);
+        var remainingLetters = word.length;
 
-        //otobrazhaem otvet i pozdravlyaem
-        alert(answerArray.join(" "));
-        if (guesses > 0) {
-            alert("Отлично! Было загадано слово " + word);
-        }   else {
-            alert("Хуйлуша! Было загадано слово " + word);
+        while (remainingLetters > 0) {
+            showPlayerProgress(answerArray);
+            var guess = getGuess;
+            if (guess === null) {
+                break;
+            }   else if (guess.length !== 1) {
+                alert("Please enter a single letter.");
+            }   else {
+                var correctGuesses = updateGameState(guess, word, answerArray);
+                remainingLetters -= correctGuesses;
+            }
         }
     </script>
 </body>
