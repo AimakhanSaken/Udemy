@@ -17,6 +17,66 @@
       } else {
         console.log("Fuck you !!!");
       }
+
+      //-----------------------------------------------------------------------------------------------------
+   /* Выбрать случайное слово
+      Пока слово не угадано {
+        Показать игроку текущее состояние игры
+        Запросить у игрока вариант ответа
+        Если игрок хочет выйти из игры {
+          Выйти из игры
+        }
+        Иначе Если вариант ответа — не одиночная буква {
+          Сообщить игроку, что он должен ввести букву
+        }
+        Иначе {
+          Если такая буква есть в слове {
+            Обновить состояние игры, подставив новую букву
+          }
+        }
+      }
+      Поздравить игрока с победой — слово угадано */
+
+      //sozdaem massiv so slovami
+      var words = ["developer", "witcher", "python", "elephant"];
+      var addWords = ["hangman", "react", "mankey"];
+      words = words.concat(addWords);
+      //random words
+      var word = words[Math.floor(Math.random() * words.length)];
+      //massiv s otvetom
+      var answerArray = [];
+      for (var i = 0; i < word.length; i++) {
+        answerArray[i] = "_";
+      }
+      var ostavshiesyaBykvy = word.length;
+      guesses = 20;
+      //igrovoy cikl
+      while (ostavshiesyaBykvy > 0 && guesses > 0) {
+        //pokazivaem sostoyanie massiva s otvetom
+        alert(answerArray.join(" "));
+        var guess = prompt("Vvedite bykvy ili naahmite otmena");
+        if (guess === null) {
+          break;
+        } else if (guess.length !== 1) {
+          alert("vvedite tolko odny bykvy");
+        } else {
+          guesses--;
+          guess = guess.toLowerCase();
+          //obnovlyaem sosotoyanie igry
+          for ( var j = 0; j < word.length; j++) {
+            if (word[j] === guess && answerArray[j] === "_") {
+              answerArray[j] = guess
+              ostavshiesyaBykvy--;
+            }
+          }
+        }
+      }
+      alert(answerArray.join("_"))
+      if (guesses > 0) {
+        alert("Win ! slovo bylo " + word);
+      } else {
+        alert("X ! slovo bylo " + word);
+      }
     </script>
     
 </body>
