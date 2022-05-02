@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.6.0.js"></script>
+    <title>Clicks</title>
+</head>
+<body>
+    <h1 id="heading">Hello !</h1>
+    <script>
+        var clickHandler = function(event) {
+            console.log("Click! " + event.pageX + " " + event.pageY);
+        };
+        $("h1").click(clickHandler);
+    </script>
+</body>
+</html>
